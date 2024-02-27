@@ -2,10 +2,10 @@
 
 ## Rules 
 
-1. A cell dies when only 1 or 0 neighbors are alive.
+1. A cell dies when its living neighbors are less than or 1.
 2. A cell dies when it has 4 or more neighbors.
-3. A Cell survives when 2 or 3 of its neighbors are alive.
-4. A Cell becomes alive when it is surrounded by 3 living cells.
+3. A cell survives when 2 or 3 of its neighbors are alive.
+4. A cell becomes alive when it is surrounded by 3 living cells.
 
 ## Commands
 
