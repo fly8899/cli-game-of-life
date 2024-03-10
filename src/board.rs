@@ -123,7 +123,7 @@ where
                     below_next,
                 );
 
-                board.insert(x, y, new.clone());
+                board.insert(x, y, new);
             }
         }
 
@@ -145,7 +145,7 @@ where
     fn new_with(x: usize, y: usize, data: Vec<Location>) -> Self {
         let mut board = Self::new(x, y);
 
-        for c in data {
+        for c in data.into_iter() {
             board.insert(c.x, c.y, T::new_alive())
         }
 
