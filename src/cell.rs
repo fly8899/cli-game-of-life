@@ -77,21 +77,27 @@ impl CellTrait for Cell {
         if above.is_some_and(|c| c.is_alive()) {
             alive += 1;
         }
+
         if below.is_some_and(|c| c.is_alive()) {
             alive += 1;
         }
+
         if before.is_some_and(|c| c.is_alive()) {
             alive += 1;
         }
+
         if next.is_some_and(|c| c.is_alive()) {
             alive += 1;
         }
+
         if above_before.is_some_and(|c| c.is_alive()) {
             alive += 1;
         }
+
         if above_next.is_some_and(|c| c.is_alive()) {
             alive += 1;
         }
+
         if below_before.is_some_and(|c| c.is_alive()) {
             alive += 1;
         }

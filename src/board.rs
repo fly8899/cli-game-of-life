@@ -72,12 +72,15 @@ where
         for (y, row) in self.rows.iter().enumerate() {
             for (x, cell) in row.iter().enumerate() {
                 let next = self.get(x + 1, y);
+
                 let below = self.get(x, y + 1);
+
                 let before = if let Some(ci) = x.checked_sub(1) {
                     self.get(ci, y)
                 } else {
                     None
                 };
+
                 let above = if let Some(bi) = y.checked_sub(1) {
                     self.get(x, bi)
                 } else {
@@ -152,6 +155,7 @@ where
     fn new(x: usize, y: usize) -> Self {
         let x_vec: Vec<T> = vec![T::new_dead(); x];
         let y_vec: Vec<Vec<T>> = vec![x_vec.clone(); y];
+
         Board { rows: y_vec }
     }
 }
@@ -164,6 +168,7 @@ mod test_board {
     fn test_board_get() {
         let board: Board<Cell> = BoardTrait::new_with(10, 10, vec![Location { x: 0, y: 0 }]);
         assert!(board.get(0, 0).is_some());
+
         let board: Board<Cell> = BoardTrait::new_with(10, 10, vec![Location { x: 11, y: 11 }]);
         assert!(board.get(11, 11).is_none());
     }
@@ -213,6 +218,7 @@ mod test_board {
                 Location { x: 3, y: 4 },
             ],
         );
+
         board.step();
 
         let cells = vec![board.get(2, 3), board.get(3, 3), board.get(4, 3)];
@@ -236,6 +242,7 @@ mod test_board {
                 Location { x: 4, y: 4 },
             ],
         );
+
         board.step();
 
         assert!(board.get(4, 4).is_some_and(|c| !c.is_alive()));
@@ -245,8 +252,10 @@ mod test_board {
     fn test_board_formatted() {
         let mut board: Board<Cell> = BoardTrait::new_with(10, 10, vec![Location { x: 0, y: 0 }]);
         let s1 = board.formatted();
+
         board.step();
         let s2 = board.formatted();
+
         assert_ne!(s1, s2)
     }
 }
